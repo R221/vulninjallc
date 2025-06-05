@@ -1,7 +1,8 @@
-
 import { Shield, Cloud, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import ContactForm from "@/components/ContactForm";
+import BlogSection from "@/components/BlogSection";
 
 const Index = () => {
   const services = [
@@ -103,6 +104,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <BlogSection />
+
       {/* CTA Section */}
       <section className="py-24 px-6 relative">
         <div className="absolute inset-0 cyber-grid opacity-30"></div>
@@ -113,9 +117,7 @@ const Index = () => {
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Don't wait for a security breach. Get a comprehensive assessment of your security posture today.
           </p>
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-background font-semibold px-8 py-4 text-lg pulse-glow">
-            Contact Security Experts
-          </Button>
+          <ContactForm />
         </div>
       </section>
 
