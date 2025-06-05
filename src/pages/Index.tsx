@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ContactForm from "@/components/ContactForm";
 import BlogSection from "@/components/BlogSection";
+import Navigation from "@/components/Navigation";
 
 const Index = () => {
   const services = [
@@ -28,8 +29,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center cyber-grid">
+      <section className="relative min-h-screen flex items-center justify-center cyber-grid pt-20">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-background opacity-90"></div>
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
           <div className="mb-8 float-animation">
@@ -54,7 +57,7 @@ const Index = () => {
       </section>
 
       {/* Our Services Section */}
-      <section className="py-24 px-6">
+      <section id="services" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">
@@ -108,7 +111,7 @@ const Index = () => {
       <BlogSection />
 
       {/* CTA Section */}
-      <section className="py-24 px-6 relative">
+      <section id="contact" className="py-24 px-6 relative">
         <div className="absolute inset-0 cyber-grid opacity-30"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">

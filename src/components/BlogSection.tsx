@@ -1,11 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { blogPosts } from "@/data/blogPosts";
+import { blogPosts, BlogPost } from "@/data/blogPosts";
 import { Calendar, User, Tag } from "lucide-react";
+import BlogDetail from "@/components/BlogDetail";
 
 const BlogSection = () => {
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -14,8 +18,18 @@ const BlogSection = () => {
     });
   };
 
+  const handleReadMore = (post: BlogPost) => {
+    setSelectedPost(post);
+    setIsDetailOpen(true);
+  };
+
+  const handleCloseDetail = () => {
+    setIsDetailOpen(false);
+    setSelectedPost(null);
+  };
+
   return (
-    <section className="py-24 px-6">
+    <section id="blog" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-glow">
@@ -83,6 +97,7 @@ const BlogSection = () => {
                 <Button 
                   className="w-full bg-transparent border border-primary text-primary hover:bg-primary hover:text-background transition-all duration-300"
                   variant="outline"
+                  onClick={() => handleReadMore(post)}
                 >
                   Read Full Article
                 </Button>
@@ -101,6 +116,12 @@ const BlogSection = () => {
           </Button>
         </div>
       </div>
+      
+      <BlogDetail 
+        post={selectedPost}
+        isOpen={isDetailOpen}
+        onClose={handleCloseDetail}
+      />
     </section>
   );
 };
