@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Mail } from "lucide-react";
+import { Mail, Shield } from "lucide-react";
 
 interface ContactFormData {
   name: string;
@@ -17,7 +17,19 @@ interface ContactFormData {
   services: string[];
 }
 
-const ContactForm = () => {
+interface ContactFormProps {
+  buttonText?: string;
+  buttonIcon?: React.ReactNode;
+  buttonVariant?: "default" | "outline";
+  buttonClassName?: string;
+}
+
+const ContactForm = ({ 
+  buttonText = "Contact Security Experts",
+  buttonIcon = <Mail className="mr-2" />,
+  buttonVariant = "default",
+  buttonClassName = "bg-accent hover:bg-accent/90 text-background font-semibold px-8 py-4 text-lg pulse-glow"
+}: ContactFormProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const form = useForm<ContactFormData>({
     defaultValues: {
@@ -44,9 +56,9 @@ const ContactForm = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button size="lg" className="bg-accent hover:bg-accent/90 text-background font-semibold px-8 py-4 text-lg pulse-glow">
-          <Mail className="mr-2" />
-          Contact Security Experts
+        <Button size="lg" variant={buttonVariant} className={buttonClassName}>
+          {buttonIcon}
+          {buttonText}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] bg-card border-border/50">

@@ -46,9 +46,11 @@ const Index = () => {
             Defend against evolving threats with our cutting-edge security solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="pulse-glow bg-primary hover:bg-primary/90 text-background font-semibold px-8 py-4 text-lg">
-              Get Security Assessment
-            </Button>
+            <ContactForm 
+              buttonText="Get Security Assessment"
+              buttonIcon={<Shield className="mr-2" />}
+              buttonClassName="pulse-glow bg-primary hover:bg-primary/90 text-background font-semibold px-8 py-4 text-lg"
+            />
             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background px-8 py-4 text-lg">
               Learn More
             </Button>
